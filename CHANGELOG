@@ -1,27 +1,78 @@
 ChangeLog
 ---------
 
-$Id$
-
-2012-03-06
-
-* test-site logic tweaked to submit more pilots
-
-* This release is a patched version of "Patches in the Sky", bumped to v1.3.3
+$Id: CHANGELOG 7686 2011-04-08 21:15:43Z jhover $
 
 
-2011-12-12
+2012-03-13
 
-* added fairshare submission logic
 
-* This release is a patched version of "Patches in the Sky", bumped to v1.3.1
+* Made Monitor object a singleton, to avoid repeated timeout delays (during queue initialization) 
+  when APF monitor is unresponsive. Now there is a single attempt when single Monitor is initialized. 
 
-2011-09-21
+* Move to wrapper 0.9.4, which 
 
-* A few minor bug fixes, mainly to download pilotcode
-  from pandasvr squid, rather than panda server itself
+* Fixed logic problem in Activated plugin. Now correctly assuming that Running jobs are no longer
+  Activated. 
 
-* This release is "Patches in the Sky". v1.3.0
+* Added specific Submit plugin for Cloud.
+
+* Configuration objects handled as python native ConfigParser objects instead of custom
+  APF objects.
+
+* Refined running as user rather than from RPM. 'setup.py install --home=/path/to/home' does a
+  user-based setup. All libs are in ~/lib/python, configs and init script in ~/etc/, and so on.
+
+* Added an external queue configuration information plugin mechanism to enable plugin-based 
+  auto-fill/overriding of config information. 
+
+* Consolidated all plugins into hierarchical inheritance tree, to eliminate duplicated code 
+  (especially the Condor plugins). 
+  
+* This release is the 'Sleeper Service' v. 2.1.0
+  http://en.wikipedia.org/wiki/GSV_Sleeper_Service
+
+2011-12-02
+
+* Major refactorization to integrate BNL changes. Full object-oriented functional 
+  plugin architecture, each running in a distinct thread. Allows for 
+  end-user/third-party customization without touching core code. 
+
+* Refined distutils usage to allow deployment as non-root in a home directory, 
+  or as root in system paths. Added functionality to drop privs even when run as
+  root. 
+
+* Added typical init script and sysconfig functionality to handle shell-level/UNIX 
+  concerns. 
+
+* Added standard Linux logrotate configuration. 
+
+* Split config system into main source for APF instance (factory.conf), proxy 
+  management (proxy.conf), individual queue configuration (queue.conf). The latter 
+  can be accessed as URI, paving the way to queue configuration via remote DB+URL.
+  
+* The previous change involved passing ConfigLoader objects to classes, rather than 
+  passing through lists of config files. 
+
+* Integrated batch system log export via HTTP; now uses embedded Python HTTP server. 
+
+* Integrated proxy handling and renewal, integrated submit system log file rotation. 
+
+* Adjusted module, file, and class names to follow Python recommended guidelines. See PEP 8:
+  http://www.python.org/dev/peps/pep-0008/ 
+  
+* Moved all filehandling to factory.py script from Factory class. Factory is now purely 
+  object-oriented suitable for embedding (e.g. in a web application). 
+
+* Added copy of Jose's generic top-level wrapper to libexec/.  
+
+* IMPORTANT: For various reasons, it was very difficult to maintain the ability to automatically
+  reload configs by detecting file mtime changes. So for now simply restart if you change a file.
+  This feature  can be re-enabled soon. 
+
+* This release is "The Clockmaker". v2.0.0
+  http://en.wikipedia.org/wiki/List_of_Revelation_Space_characters#The_Clockmaker
+
 
 2011-03-28
 
