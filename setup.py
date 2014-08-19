@@ -67,7 +67,7 @@ docs_files.append('RELEASE_NOTES')
 
 rpm_data_files=[('/etc/apf',           libexec_files),
                 ('/etc/apf',           etc_files),
-                ('/etc/init.d',        initd_files),
+                ('/etc/rc.d/init.d',   initd_files),
                 ('/etc/logrotate.d',   logrotate_files),                                        
                 ('/usr/share/doc/apf', docs_files),                                        
                 #('/usr/share/apf',     utils_files),                                        
