@@ -43,7 +43,7 @@ etc_files = ['etc/factory.conf-example',
 initd_files = ['etc/factory',
                'etc/proxymanager']
 
-logrotate_files = ['etc/factory.logrotate',]
+logrotate_files = ['etc/logrotate/factory',]
 
 # docs files:
 #   --everything in the docs/ directory
