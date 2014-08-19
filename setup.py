@@ -31,10 +31,10 @@ if major == 2:
 libexec_files = ['libexec/%s' %file for file in os.listdir('libexec') if os.path.isfile('libexec/%s' %file)]
 
 etc_files = ['etc/factory.conf',
-             'etc/queues.conf-example',
-             'etc/proxy.conf-example',
-             'etc/monitor.conf-example',
-             'etc/logsmonitor.rotate.conf-example',
+             'etc/queues.conf',
+             'etc/proxy.conf',
+             'etc/monitor.conf',
+             'etc/logsmonitor.rotate.conf',
              'etc/apf-search-failed.sh-example',
              ]
 
