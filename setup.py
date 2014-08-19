@@ -30,12 +30,10 @@ if major == 2:
 
 libexec_files = ['libexec/%s' %file for file in os.listdir('libexec') if os.path.isfile('libexec/%s' %file)]
 
-etc_files = ['etc/factory.conf-example',
+etc_files = ['etc/factory.conf',
              'etc/queues.conf-example',
              'etc/proxy.conf-example',
              'etc/monitor.conf-example',
-             'etc/factory.sysconfig-example',
-             'etc/proxymanager.sysconfig-example',
              'etc/logsmonitor.rotate.conf-example',
              'etc/apf-search-failed.sh-example',
              ]
@@ -44,6 +42,10 @@ initd_files = ['etc/factory',
                'etc/proxymanager']
 
 logrotate_files = ['etc/logrotate/factory',]
+
+sysconfig_files = ['etc/sysconfig/factory',
+                   'etc/sysconfig/proxymanager',
+                  ]
 
 # docs files:
 #   --everything in the docs/ directory
@@ -68,16 +70,18 @@ docs_files.append('RELEASE_NOTES')
 rpm_data_files=[('/etc/apf',           libexec_files),
                 ('/etc/apf',           etc_files),
                 ('/etc/rc.d/init.d',   initd_files),
-                ('/etc/logrotate.d',   logrotate_files),                                        
-                ('/usr/share/doc/apf', docs_files),                                        
-                #('/usr/share/apf',     utils_files),                                        
+                ('/etc/logrotate.d',   logrotate_files),
+                ('/etc/sysconfig',     sysconfig_files),
+                ('/usr/share/doc/apf', docs_files),
+                #('/usr/share/apf',     utils_files),
                ]
 
-home_data_files=[('etc',       libexec_files),
-                 ('etc',       etc_files),
-                 ('etc',       initd_files),
-                 ('doc/apf',   docs_files ),
-                 #('share/apf', utils_files),                                        
+home_data_files=[('etc',           libexec_files),
+                 ('etc',           etc_files),
+                 ('etc/init.d',    initd_files),
+                 ('etc/sysconfig', sysconfig_files),
+                 ('doc/apf',       docs_files),
+                 #('share/apf',    utils_files),
                 ]
 
 # -----------------------------------------------------------
