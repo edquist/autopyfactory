@@ -53,6 +53,13 @@ sysconfig_files = ['etc/sysconfig/factory',
 docs_files = ['docs/%s' %file for file in os.listdir('docs') if os.path.isfile('docs/%s' %file)]
 docs_files.append('RELEASE_NOTES')
 
+man1_files = ['docs/man/autopyfactory.1']
+man5_files = ['docs/man/autopyfactory-factory.conf.5',
+              'docs/man/autopyfactory-monitor.conf.5',
+              'docs/man/autopyfactory-proxy.conf.5',
+              'docs/man/autopyfactory-queues.conf.5',
+             ]
+
 # NOTE: these utils are going to be distributed from now on 
 #       in a separated RPM
 #
@@ -67,12 +74,14 @@ docs_files.append('RELEASE_NOTES')
 
 # -----------------------------------------------------------
 
-rpm_data_files=[('/etc/apf',           libexec_files),
-                ('/etc/apf',           etc_files),
-                ('/etc/rc.d/init.d',   initd_files),
-                ('/etc/logrotate.d',   logrotate_files),
-                ('/etc/sysconfig',     sysconfig_files),
-                ('/usr/share/doc/apf', docs_files),
+rpm_data_files=[('/etc/apf',            libexec_files),
+                ('/etc/apf',            etc_files),
+                ('/etc/rc.d/init.d',    initd_files),
+                ('/etc/logrotate.d',    logrotate_files),
+                ('/etc/sysconfig',      sysconfig_files),
+                ('/usr/share/doc/apf',  docs_files),
+                ('/usr/share/man/man1', man1_files),
+                ('/usr/share/man/man5', man5_files),
                 #('/usr/share/apf',     utils_files),
                ]
 
@@ -81,6 +90,8 @@ home_data_files=[('etc',           libexec_files),
                  ('etc/init.d',    initd_files),
                  ('etc/sysconfig', sysconfig_files),
                  ('doc/apf',       docs_files),
+                 ('man/man1',      man1_files),
+                 ('man/man5',      man5_files),
                  #('share/apf',    utils_files),
                 ]
 
