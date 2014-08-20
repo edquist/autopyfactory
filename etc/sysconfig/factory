@@ -18,7 +18,7 @@
 #
 # Override default conffile path if desired. 
 #
-# CONFFILE=/etc/apf/factory.conf
+# CONFFILE=/etc/autopyfactory/factory.conf
 # CONFFILE="/usatlas/us/caballer/etc/factory.conf"
 
 OPTIONS="--debug --sleep=60 --runas=apf --log=/var/log/apf/apf.log"

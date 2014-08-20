@@ -15,7 +15,7 @@
 #
 # Override default conffile path if desired. 
 #
-# CONFFILE=/etc/apf/factory.conf
+# CONFFILE=/etc/autopyfactory/factory.conf
 # CONFFILE="/usatlas/us/caballer/etc/factory.conf"
 
 OPTIONS="--debug --log=/var/log/apf/proxymanager.log"

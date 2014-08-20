@@ -10,7 +10,7 @@
 
 
 # first, do file rotation
-/usr/sbin/logrotate -f -s /dev/null /etc/apf/logsmonitor.rotate.conf
+/usr/sbin/logrotate -f -s /dev/null /etc/autopyfactory/logsmonitor.rotate.conf
 
 # second, create new file
 /usr/share/apf/apf-search-failed > /tmp/error.lasthour.html

@@ -74,25 +74,25 @@ man5_files = ['docs/man/autopyfactory-factory.conf.5',
 
 # -----------------------------------------------------------
 
-rpm_data_files=[('/etc/apf',            libexec_files),
-                ('/etc/apf',            etc_files),
-                ('/etc/rc.d/init.d',    initd_files),
-                ('/etc/logrotate.d',    logrotate_files),
-                ('/etc/sysconfig',      sysconfig_files),
-                ('/usr/share/doc/apf',  docs_files),
-                ('/usr/share/man/man1', man1_files),
-                ('/usr/share/man/man5', man5_files),
-                #('/usr/share/apf',     utils_files),
+rpm_data_files=[('/etc/autopyfactory',            libexec_files),
+                ('/etc/autopyfactory',            etc_files),
+                ('/etc/rc.d/init.d',              initd_files),
+                ('/etc/logrotate.d',              logrotate_files),
+                ('/etc/sysconfig',                sysconfig_files),
+                ('/usr/share/doc/autopyfactory',  docs_files),
+                ('/usr/share/man/man1',           man1_files),
+                ('/usr/share/man/man5',           man5_files),
+                #('/usr/share/autopyfactory',     utils_files),
                ]
 
-home_data_files=[('etc',           libexec_files),
-                 ('etc',           etc_files),
-                 ('etc/init.d',    initd_files),
-                 ('etc/sysconfig', sysconfig_files),
-                 ('doc/apf',       docs_files),
-                 ('man/man1',      man1_files),
-                 ('man/man5',      man5_files),
-                 #('share/apf',    utils_files),
+home_data_files=[('etc',                   libexec_files),
+                 ('etc',                   etc_files),
+                 ('etc/init.d',            initd_files),
+                 ('etc/sysconfig',         sysconfig_files),
+                 ('doc/autopyfactory',     docs_files),
+                 ('man/man1',              man1_files),
+                 ('man/man5',              man5_files),
+                 #('share/autopyfactory',  utils_files),
                 ]
 
 # -----------------------------------------------------------

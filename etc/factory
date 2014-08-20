@@ -7,7 +7,7 @@
 # chkconfig: 345 26 74
 # description: Submit pilot jobs to grid sites. 
 # processname: factory
-# config: /etc/apf/factory.conf 
+# config: /etc/autopyfactory/factory.conf 
 # pidfile: /var/run/factory.pid
 #
 #
@@ -65,7 +65,7 @@ if [ `id -u` = 0 ]; then
     APFHEAD=/
     SYSCONF=/etc/sysconfig/factory
     BINDIR=/usr/bin
-    ETCDIR=/etc/apf
+    ETCDIR=/etc/autopyfactory
     PIDFILE=/var/run/factory.pid
 else
     APFHEAD=`dirname $FACTDIR`
