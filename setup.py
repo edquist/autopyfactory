@@ -38,8 +38,8 @@ etc_files = ['etc/factory.conf',
              'etc/apf-search-failed.sh-example',
              ]
 
-initd_files = ['etc/autopyfactory',
-               'etc/proxymanager']
+initd_files = ['etc/initd/autopyfactory',
+               'etc/initd/proxymanager']
 
 logrotate_files = ['etc/logrotate/autopyfactory',]
 
