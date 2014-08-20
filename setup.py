@@ -38,12 +38,12 @@ etc_files = ['etc/factory.conf',
              'etc/apf-search-failed.sh-example',
              ]
 
-initd_files = ['etc/factory',
+initd_files = ['etc/autopyfactory',
                'etc/proxymanager']
 
-logrotate_files = ['etc/logrotate/factory',]
+logrotate_files = ['etc/logrotate/autopyfactory',]
 
-sysconfig_files = ['etc/sysconfig/factory',
+sysconfig_files = ['etc/sysconfig/autopyfactory',
                    'etc/sysconfig/proxymanager',
                   ]
 
@@ -140,7 +140,7 @@ setup(
               'autopyfactory.plugins.wmsstatus',
               ],
     scripts = [ # Utilities and main script
-               'bin/factory',
+               'bin/autopyfactory',
                'bin/proxymanager'
               ],
     

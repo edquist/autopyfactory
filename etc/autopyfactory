@@ -1,14 +1,14 @@
 #!/bin/bash
 #
-#	/etc/rc.d/init.d/factory
+#	/etc/rc.d/init.d/autopyfactory
 #
 # Starts the autopyfactory daemon
 #
 # chkconfig: 345 26 74
 # description: Submit pilot jobs to grid sites. 
-# processname: factory
+# processname: autopyfactory
 # config: /etc/autopyfactory/factory.conf 
-# pidfile: /var/run/factory.pid
+# pidfile: /var/run/autopyfactory.pid
 #
 #
 
@@ -63,17 +63,17 @@ f_factdir
 
 if [ `id -u` = 0 ]; then
     APFHEAD=/
-    SYSCONF=/etc/sysconfig/factory
+    SYSCONF=/etc/sysconfig/autopyfactory
     BINDIR=/usr/bin
     ETCDIR=/etc/autopyfactory
-    PIDFILE=/var/run/factory.pid
+    PIDFILE=/var/run/autopyfactory.pid
 else
     APFHEAD=`dirname $FACTDIR`
 
-    SYSCONF=$APFHEAD/etc/sysconfig/factory
+    SYSCONF=$APFHEAD/etc/sysconfig/autopyfactory
     BINDIR=$APFHEAD/bin
     ETCDIR=$APFHEAD/etc
-    PIDFILE=$APFHEAD/var/run/factory.pid
+    PIDFILE=$APFHEAD/var/run/autopyfactory.pid
 fi
 
 CONFFILE=$ETCDIR/factory.conf
@@ -102,13 +102,13 @@ RETVAL=0
 check() {
 	
 	# Check if factory.py is executable
-	test -x $BINDIR/factory || exit 5
+	test -x $BINDIR/autopyfactory || exit 5
 }
 
 create_var_run(){
     # function to create directory  $APFHEAD/var/run 
     # if it does not exist. 
-    # It is needed to place the file factory.pid 
+    # It is needed to place the file autopyfactory.pid 
     if [ ! -d $APFHEAD/var/run/ ]; then
         mkdir -p $APFHEAD/var/run/
     fi
@@ -130,11 +130,11 @@ start() {
 		echo -n $"Starting APF daemon: "	
         create_var_run
         create_var_log
-	    # daemon --pidfile=${PIDFILE} "$BINDIR/factory --conf $CONFFILE $OPTIONS "
+	    # daemon --pidfile=${PIDFILE} "$BINDIR/autopyfactory --conf $CONFFILE $OPTIONS "
         if [ -n "$CONSOLE_LOG" ]; then
-        	$BINDIR/factory --conf $CONFFILE $OPTIONS >> $CONSOLE_LOG 2>&1 &
+        	$BINDIR/autopyfactory --conf $CONFFILE $OPTIONS >> $CONSOLE_LOG 2>&1 &
         else
-            $BINDIR/factory --conf $CONFFILE $OPTIONS &
+            $BINDIR/autopyfactory --conf $CONFFILE $OPTIONS &
         fi
         RETVAL=$?
 		PID=$!
@@ -148,14 +148,14 @@ start() {
 			PROGRETVAL=$?
 			rm -f $PIDFILE
 		fi
-        [ "$PROGRETVAL" -eq 0 ] && success $"factory startup" || failure $"factory startup"
+        [ "$PROGRETVAL" -eq 0 ] && success $"autopyfactory startup" || failure $"autopyfactory startup"
 	    echo
 	else
 		if checkpid $PID; then
-			echo "$0: daemon with PID $PID already running." && success $"factory startup"
+			echo "$0: daemon with PID $PID already running." && success $"autopyfactory startup"
 			PROGRETVAL=0
 		else
-			echo "$0: daemon dead but PID file exists: $PIDFILE" && failure $"factory startup"
+			echo "$0: daemon dead but PID file exists: $PIDFILE" && failure $"autopyfactory startup"
 	    	PROGRETVAL=1
 	    fi
 	fi
@@ -167,9 +167,9 @@ stop() {
 
 	check
 	echo -n $"Stopping APF daemon: "
-	killproc -p $PIDFILE factory
+	killproc -p $PIDFILE autopyfactory
 	RETVAL=$?
-	[ $RETVAL -eq 0 ] && rm -f $PIDFILE && success $"factory shutdown" || failure $"factory shutdown"
+	[ $RETVAL -eq 0 ] && rm -f $PIDFILE && success $"autopyfactory shutdown" || failure $"autopyfactory shutdown"
 	echo
     return $RETVAL
 }
@@ -215,13 +215,13 @@ restart)
 	RETVAL=$?
 	;;
 condrestart)
-	if [ -f /var/lock/subsys/factory ]; then
+	if [ -f /var/lock/subsys/autopyfactory ]; then
 	    restart
 	fi
 	RETVAL=$?
 	;;
 status)
-	status factory
+	status autopyfactory
 	RETVAL=$?
 	;;
 *)
