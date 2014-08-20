@@ -115,10 +115,10 @@ create_var_run(){
 }
 
 create_var_log(){
-    # function to create directory  $APFHEAD/var/log/apf 
+    # function to create directory  $APFHEAD/var/log/autopyfactory
     # if it does not exist. 
-    if [ ! -d $APFHEAD/var/log/apf ]; then
-        mkdir -p $APFHEAD/var/log/apf/
+    if [ ! -d $APFHEAD/var/log/autopyfactory ]; then
+        mkdir -p $APFHEAD/var/log/autopyfactory/
     fi
 }
 
