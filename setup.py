@@ -35,7 +35,6 @@ etc_files = ['etc/factory.conf',
              'etc/proxy.conf',
              'etc/monitor.conf',
              'etc/logsmonitor.rotate.conf',
-             'etc/apf-search-failed.sh-example',
              ]
 
 initd_files = ['etc/initd/autopyfactory',
@@ -74,8 +73,7 @@ man5_files = ['docs/man/autopyfactory-factory.conf.5',
 
 # -----------------------------------------------------------
 
-rpm_data_files=[('/etc/autopyfactory',         libexec_files),
-                ('/etc/autopyfactory',         etc_files),
+rpm_data_files=[('/etc/autopyfactory',         etc_files),
                 ('/etc/rc.d/init.d',           initd_files),
                 ('/etc/logrotate.d',           logrotate_files),
                 ('/etc/sysconfig',             sysconfig_files),
@@ -84,8 +82,7 @@ rpm_data_files=[('/etc/autopyfactory',         libexec_files),
                 #('/usr/share/autopyfactory',  utils_files),
                ]
 
-home_data_files=[('etc',                   libexec_files),
-                 ('etc',                   etc_files),
+home_data_files=[('etc',                   etc_files),
                  ('etc/init.d',            initd_files),
                  ('etc/sysconfig',         sysconfig_files),
                  ('doc/autopyfactory',     docs_files),
